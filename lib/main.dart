@@ -1,3 +1,4 @@
+import 'package:ecommerce_tv/bloc/checkout_bloc/checkout_bloc.dart';
 import 'package:ecommerce_tv/bloc/get_products_bloc/get_products_bloc.dart';
 import 'package:ecommerce_tv/data/datasources/product_remote_datasource.dart';
 import 'package:ecommerce_tv/presentation/home/home_page.dart';
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => GetProductsBloc(ProductRemotedatasource()),
+        ),
+        BlocProvider(
+          create: (context) => CheckoutBloc(),
         ),
       ],
       child: MaterialApp(

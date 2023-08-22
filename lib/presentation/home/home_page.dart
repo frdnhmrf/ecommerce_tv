@@ -1,3 +1,4 @@
+import 'package:ecommerce_tv/presentation/home/widgets/banner_widget.dart';
 import 'package:ecommerce_tv/presentation/home/widgets/list_category_widget.dart';
 import 'package:ecommerce_tv/presentation/home/widgets/list_product_widget.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +89,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            // child: BannerWidget(),
+            child: BannerWidget(),
           ),
           Padding(
             padding: EdgeInsets.only(left: 16),

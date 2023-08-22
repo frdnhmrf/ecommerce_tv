@@ -1,3 +1,4 @@
+import 'package:ecommerce_tv/bloc/checkout_bloc/checkout_bloc.dart';
 import 'package:ecommerce_tv/bloc/get_products_bloc/get_products_bloc.dart';
 import 'package:ecommerce_tv/data/model/responses/list_product_response_model.dart';
 import 'package:flutter/material.dart';
@@ -21,11 +22,9 @@ class _ListProductWidgetState extends State<ListProductWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<GetProductsBloc, GetProductsState>(
       builder: (context, state) {
-        print(state);
         if (state is GetProductsError) {
           return const Center(child: Text('Error'));
         }
-        print(state);
         if (state is GetProductsLoaded) {
           if (state.data.data!.isEmpty) {
             return const Center(
@@ -95,72 +94,72 @@ class _ListProductWidgetState extends State<ListProductWidget> {
                       height: 2,
                       color: Colors.grey,
                     ),
-                    // Column(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-                    //     const SizedBox(
-                    //       height: 10,
-                    //     ),
-                    //     Row(
-                    //       mainAxisAlignment: MainAxisAlignment.center,
-                    //       children: <Widget>[
-                    //         Row(
-                    //           children: [
-                    //             InkWell(
-                    //               onTap: () {
-                    //                 context.read<CheckoutBloc>().add(
-                    //                     RemoveFromCartEvent(product: product));
-                    //               },
-                    //               child: const Icon(
-                    //                 Icons.add_shopping_cart,
-                    //                 size: 20,
-                    //                 color: Color(0xffEE4D2D),
-                    //               ),
-                    //             ),
-                    //             const SizedBox(
-                    //               width: 2,
-                    //             ),
-                    //             const Text(
-                    //               "Beli",
-                    //               style: TextStyle(
-                    //                 color: Color(0xffEE4D2D),
-                    //                 fontSize: 16,
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //         const SizedBox(
-                    //           width: 8,
-                    //         ),
-                    //         Row(
-                    //           children: [
-                    //             const Icon(
-                    //               Icons.remove_circle_outline,
-                    //               size: 18,
-                    //               color: Color(0xffEE4D2D),
-                    //             ),
-                    //             const Padding(
-                    //               padding: EdgeInsets.symmetric(horizontal: 5),
-                    //               child: Text('0'),
-                    //             ),
-                    //             InkWell(
-                    //               onTap: () {
-                    //                 context
-                    //                     .read<CheckoutBloc>()
-                    //                     .add(AddToCartEvent(product: product));
-                    //               },
-                    //               child: const Icon(
-                    //                 Icons.add_circle_outline,
-                    //                 size: 18,
-                    //                 color: Color(0xffEE4D2D),
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ],
-                    // ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    context.read<CheckoutBloc>().add(
+                                        RemoveToCartEvent(product: product));
+                                  },
+                                  child: const Icon(
+                                    Icons.add_shopping_cart,
+                                    size: 20,
+                                    color: Color(0xffEE4D2D),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 2,
+                                ),
+                                const Text(
+                                  "Beli",
+                                  style: TextStyle(
+                                    color: Color(0xffEE4D2D),
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.remove_circle_outline,
+                                  size: 18,
+                                  color: Color(0xffEE4D2D),
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5),
+                                  child: Text('0'),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<CheckoutBloc>()
+                                        .add(AddToCartEvent(product: product));
+                                  },
+                                  child: const Icon(
+                                    Icons.add_circle_outline,
+                                    size: 18,
+                                    color: Color(0xffEE4D2D),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               );
