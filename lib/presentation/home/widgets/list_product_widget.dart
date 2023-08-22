@@ -133,14 +133,32 @@ class _ListProductWidgetState extends State<ListProductWidget> {
                             ),
                             Row(
                               children: [
-                                const Icon(
-                                  Icons.remove_circle_outline,
-                                  size: 18,
-                                  color: Color(0xffEE4D2D),
+                                InkWell(
+                                  onTap: () {
+                                    context.read<CheckoutBloc>().add(
+                                        RemoveToCartEvent(product: product));
+                                  },
+                                  child: const Icon(
+                                    Icons.remove_circle_outline,
+                                    size: 18,
+                                    color: Color(0xffEE4D2D),
+                                  ),
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 5),
-                                  child: Text('0'),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 5),
+                                  child:
+                                      BlocBuilder<CheckoutBloc, CheckoutState>(
+                                    builder: (context, state) {
+                                      if (state is CheckoutLoaded) {
+                                        final countItem = state.items
+                                            .where((e) => e.id == product.id)
+                                            .length;
+                                        return Text('$countItem');
+                                      }
+                                      return const Text('0');
+                                    },
+                                  ),
                                 ),
                                 InkWell(
                                   onTap: () {
