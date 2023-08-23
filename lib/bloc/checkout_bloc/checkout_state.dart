@@ -8,6 +8,7 @@ class CheckoutLoading extends CheckoutState {}
 
 class CheckoutLoaded extends CheckoutState {
   List<Product> items;
+
   CheckoutLoaded({
     required this.items,
   });

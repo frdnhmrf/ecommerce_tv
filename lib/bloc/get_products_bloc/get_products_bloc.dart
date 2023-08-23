@@ -1,4 +1,4 @@
-import 'package:ecommerce_tv/data/datasources/product_remote_datasource.dart';
+import 'package:ecommerce_tv/data/datasources/remotes/product_remote_datasource.dart';
 import 'package:ecommerce_tv/data/model/responses/list_product_response_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

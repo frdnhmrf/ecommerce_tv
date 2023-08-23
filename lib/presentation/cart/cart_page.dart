@@ -1,5 +1,8 @@
 import 'package:ecommerce_tv/bloc/checkout_bloc/checkout_bloc.dart';
 import 'package:ecommerce_tv/common/global_variables.dart';
+import 'package:ecommerce_tv/data/datasources/locals/auth_local_datasource.dart';
+import 'package:ecommerce_tv/presentation/auth/auth_page.dart';
+import 'package:ecommerce_tv/presentation/checkout/checkout_page.dart';
 import 'package:ecommerce_tv/presentation/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
@@ -119,7 +122,18 @@ class _CartPageState extends State<CartPage> {
           Padding(
             padding: const EdgeInsets.all(8),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                final isLogin = await AuthLocalDatasource().isLogin();
+                if (isLogin) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const CheckoutPage();
+                  }));
+                } else {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const AuthPage();
+                  }));
+                }
+              },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50),
                 backgroundColor: const Color(0xffEE4D2D),

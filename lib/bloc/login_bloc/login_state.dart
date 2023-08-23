@@ -1,5 +1,16 @@
 part of 'login_bloc.dart';
 
-sealed class LoginState {}
+abstract class LoginState {}
 
-final class LoginInitial extends LoginState {}
+class LoginInitial extends LoginState {}
+
+class LoginLoaded extends LoginState {
+  final AuthResponseModel model;
+  LoginLoaded({
+    required this.model,
+  });
+}
+
+class LoginLoading extends LoginState {}
+
+class LoginError extends LoginState {}

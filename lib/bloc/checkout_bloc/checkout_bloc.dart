@@ -17,7 +17,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       final currentState = state as CheckoutLoaded;
       currentState.items.remove(event.product);
       emit(CheckoutLoading());
-      emit(CheckoutLoaded(items: [...currentState.items]));
+      emit(CheckoutLoaded(items: currentState.items));
     });
   }
 }
